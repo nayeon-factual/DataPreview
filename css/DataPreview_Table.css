@@ -1,0 +1,45 @@
+.header{
+    position: absolute;
+    height: 15%;
+    width: 99%;
+    background-color: #F2FFFB;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    font-weight: bold;
+}
+
+.viewtabs{
+    position: inherit;
+    top:70%;
+    width:40%;
+    left:60%;
+}
+
+.overview{
+    position: inherit;
+    width: 12%;
+    display: inline-block;
+    right: 30%;
+    
+}
+
+.mapview{
+    position: inherit;
+    width: 8%;
+    display: inline-block;
+    right:20%;
+}
+
+.tableview{
+    position: inherit;
+    width: 8%;
+    display: inline-block;
+    right:13%;
+}
+
+.countsview{
+    position: inherit;
+    width: 8%;
+    right: 5%;
+    display: inline-block;
+}
