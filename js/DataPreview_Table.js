@@ -2,8 +2,9 @@ var columns = [];
 var readCall = "";
 
 var options = {
-enableCellNavigation: true,
-enableColumnReorder: false
+    enableCellNavigation: true,
+    enableColumnReorder: false,
+    autoHeight: true
 };
 
 function populateDataGridHeading(fieldsDataObject){
@@ -39,15 +40,22 @@ function makeReadCall(){
 
 function createGrid(dataArray) {
   $(function () {
-//      console.log(dataArray);
       var dataView = new Slick.Data.DataView();
       var grid = new Slick.Grid(".dataResultsGrid", dataView, columns, options);
+      grid.setSelectionModel(new Slick.RowSelectionModel());
       
+      dataView.onRowCountChanged.subscribe(function (e, args) {
+          grid.updateRowCount();
+          grid.render();
+      });
       dataView.onRowsChanged.subscribe(function(e,args) {
           grid.invalidateRows(args.rows);
           grid.render();
       });
+      
+//      dataView.beginUpdate();
       dataView.setItems(dataArray);
+//      dataView.endUpdate();
       
       grid.onSort.subscribe(function(e, args) {
           var comparer = function(a, b) {
