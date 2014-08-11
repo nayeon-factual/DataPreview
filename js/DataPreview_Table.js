@@ -13,7 +13,10 @@ function populateDataGridHeading(fieldsDataObject){
 }
 
 function makeReadCall(){
-    
+    var initReadCall = URL.replace('www.factual.com/data','api.v3.factual.com');
+    initReadCall += '&KEY='+key;
+    var readCall = initReadCall.replace('places#','places?');
+    window.open(readCall);
 }
 
 function createGrid() {
