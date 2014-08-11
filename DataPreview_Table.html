@@ -2,9 +2,9 @@
     <head>
         <title> DataPreview: Table </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href='SmartSearch/resources/select2-3.5.1/select2.css' rel='stylesheet'/>
         <link href='SmartSearch/css/SmartSearch.css' rel='stylesheet'/>
         <link href='css/DataPreview_Table.css' rel='stylesheet'/>
-        <link href='SmartSearch/resources/select2-3.5.1/select2.css' rel='stylesheet'/>
         <script src="//code.jquery.com/jquery-1.11.1.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/keyterms.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/taxonomy.js"></script>
@@ -12,6 +12,16 @@
         <script type="text/javascript" src="SmartSearch/resources/select2-3.5.1/select2.js"></script>
         <script type="text/javascript" src="SmartSearch/js/filters.js"></script>
         <script type="text/javascript" src="SmartSearch/js/SmartSearch.js"></script>
+        <script type="text/javascript" src="js/DataPreview_Table.js"></script>
+        
+        <!--SlickGrid Library-->
+        <link href='/resources/SlickGrid-master/slick.grid.css' rel='stylesheet'/>
+        <link href='/resources/SlickGrid-master/css/smoothness/jquery-ui-1.8.16.custom.css' rel='stylesheet'/>
+<!--        <script type="text/javascript" src="/resources/SlickGrid-master/lib/jquery-1.7.min.js"></script>-->
+        <script type="text/javascript" src="/resources/SlickGrid-master/lib/jquery.event.drag-2.2.js"></script>
+        <script type="text/javascript" src="/resources/SlickGrid-master/slick.core.js"></script>
+        <script type="text/javascript" src="/resources/SlickGrid-master/slick.grid.js"></script>
+
     </head>
     
     <body>
@@ -25,7 +35,6 @@
         </div>  
     </div>    
         
-        
     <!-- General Input Search -->
     <input class="searchInput" placeholder="Search" onkeydown="keyPress();"/>
     <!-- Filters Input Search -->
@@ -34,19 +43,23 @@
         <input type="hidden" class="filterInput" placeholder="Search"/>
         <p class="filterSuggestions">Escape to Exit Filter Mode</p>
     </div>
-        
+    
+    <!-- Search Suggestions - make this dynamic? -->
     <p class="suggestions">
         Suggested Searches: &nbsp; "country: US"  &nbsp; "region: CA"  &nbsp; "city: Los Angeles" &nbsp; "chain: Starbucks"    
     </p>
-        
+    
+    <!-- Button - get rid of see result and openURL() every time URL is updated -->
     <div id="buttons">
-<!--        <input type="button" value="Add Filter" id="searchButton" onClick=""/>-->
-        <input type="button" value="See Results" id="resultsButton" onClick="openURL();"/>
+<!--        <input type="button" value="See Results" id="resultsButton" onClick="openURL();"/>-->
         <input type="button" value="Reset Filters" id="resetButton" onClick="reset();"/>
     </div>    
     
-    <div id="history">
-    </div>
+    <!-- Filters History -->
+    <div id="history"></div>
+        
+    <!-- SlickGrid Frame -->
+    <div class="dataResultsGrid"></div>
         
     </body>
 </html>

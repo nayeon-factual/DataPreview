@@ -43,3 +43,14 @@
     right: 5%;
     display: inline-block;
 }
+
+.dataResultsGrid{
+    position: absolute;
+    left:5%;
+    right:5%;
+    top: 42%;
+    height:60%;
+    width: 90%;
+    background-color: #F2FFFB;
+    overflow: auto;
+}
