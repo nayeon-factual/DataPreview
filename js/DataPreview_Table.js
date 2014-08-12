@@ -4,17 +4,17 @@ var readCall = "";
 var options = {
     enableCellNavigation: true,
     enableColumnReorder: false,
-    autoHeight: true
+    autoHeight: false
 };
 
 function populateDataGridHeading(fieldsDataObject){
     if(fieldsDataObject.label!='Address Extended'&&fieldsDataObject.label!='Category IDs'&&fieldsDataObject.label!='Chain ID'){
-    var gridHeading = {};
-    gridHeading['id']=fieldsDataObject.name;
-    gridHeading['name']=fieldsDataObject.label;
-    gridHeading['field']=fieldsDataObject.name;
-    gridHeading['sortable']=true;
-    columns.push(gridHeading);
+      var gridHeading = {};
+      gridHeading['id']=fieldsDataObject.name;
+      gridHeading['name']=fieldsDataObject.label;
+      gridHeading['field']=fieldsDataObject.name;
+      gridHeading['sortable']=true;
+      columns.push(gridHeading);
     }
 }
 
