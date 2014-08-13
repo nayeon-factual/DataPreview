@@ -52,5 +52,8 @@
     height:60%;
     width: 90%;
     background-color: #F2FFFB;
+}
+
+.ui-jqgrid .ui-jqgrid-bdiv {
     overflow: auto;
 }

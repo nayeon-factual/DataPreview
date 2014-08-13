@@ -28,7 +28,6 @@ function makeReadCall(){
     var initReadCall = URL.replace('www.factual.com/data','api.v3.factual.com');
     initReadCall += '&limit=50&KEY='+key;
     readCall = initReadCall.replace(table_id+'#',table_id+'?');
-//    console.log('gridColumns '+JSON.stringify(columns));
     $.get(readCall).done(function(data){
         var readResults = data.response.data;
         var dataArray = [];
@@ -73,16 +72,19 @@ function createjqxGrid(dataArray) {
       $(".dataResultsGrid").jqxGrid(
         {
           width: 1290,
-          source: dataAdapter,                
+          source: dataAdapter,
+          // theme:theme,                
           // pageable: true,
-          autoheight: true,
+          autoheight: false,
           sortable: true,
-          altrows: true,
-          enabletooltips: true,
+          columnsResize:true,
+          // altrows: true,
+          // enabletooltips: true,
           editable: false,
-          selectionmode: 'multiplecellsadvanced',
+          selectionmode: 'singlerow',
           columns: gridColumns
         });
+      $('.dataResultsGrid').jqxGrid('autoresizecolumns'); 
   });
 }
 
