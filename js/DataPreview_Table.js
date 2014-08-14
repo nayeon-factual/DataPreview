@@ -16,12 +16,17 @@ var readCall = "";
 var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
           if (Object.prototype.toString.call(value) == '[object Array]') {
             if(columnfield == 'name'){
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> <b>' + value[0] + '</b> <br>' + value[1] +'</span>';
+              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> <b>' + value[0] + '</b> <br> <a href="http://www.factual.com/'+value[1]+'">' + value[1] +'</a></span>';
             }else if(columnfield == 'location'){
-              var addressStr = value[0] + ', ' + value[2] + ', ' + value[3] + ', ' + value[5].toUpperCase() + ' ' + value[4];
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';">' + addressStr + '<br> PO Box:' + value[1] +'</span>';
+              var pobox = formatDataDisplay(' | PO Box: ', value[1]);
+              var addressStr = value[0] + '<br>' + value[2] + ', ' + value[3] + ', ' + value[5].toUpperCase() + ' ' + value[4];
+              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';">' + addressStr + pobox +'</span>';
             }else if(columnfield == 'contact'){
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> Tel: ' + value[1] + '  Fax: ' + value[2] + '  Email: ' + value[3] + '<br> Website: ' + value[0] +'</span>';
+              var tel = formatDataDisplay('Tel: ', value[1]);
+              var fax = formatDataDisplay(' | Fax: ', value[2]);
+              var email = formatDataDisplay(' | Email: ', value[3]);
+              var website = formatDataDisplay('', value[0]);
+              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> ' + tel + fax + email + '<br> Website: ' + value[0] +'</span>';
             }else if(columnfield == 'latlng'){
               return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> ' + value[0] + ', <br> ' + value[1] +'</span>';
             }
@@ -31,6 +36,14 @@ var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproper
               return '<span style="margin: 4px;float: ' + columnproperties.cellsalign + ';">' + value + '</span>';
           }
       }
+
+function formatDataDisplay(field, value){
+  if(value == null){
+    return '';
+  }else{
+    return field + value;
+  }
+}
 
 //Creates gridHeadings and puts them in gridColumns array
 function populateDataGridHeading(fieldsDataObject){
@@ -63,7 +76,7 @@ function populateDataGridHeading(fieldsDataObject){
       }else if(locationColumn.indexOf(fieldsDataObject.name) == 0){
         gridHeading['text']='Location';
         gridHeading['datafield']='location';
-        gridHeading['width']=550;
+        gridHeading['width']=450;
       }else if(latlngColumn.indexOf(fieldsDataObject.name) == 0){
         gridHeading['text']='Lat/Lng';
         gridHeading['datafield']='latlng';
