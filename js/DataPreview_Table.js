@@ -8,6 +8,15 @@ var readCall = "";
 //     autoHeight: false
 // };
 
+var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
+          if (columnfield == 'name') {
+              return '<span style="margin: 4px; height:10px; float: ' + columnproperties.cellsalign + ';">' + value + '<br> factual id can go here' +'</span>';
+          }
+          else {
+              return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '</span>';
+          }
+      }
+
 //Creates gridHeadings and puts them in gridColumns array
 function populateDataGridHeading(fieldsDataObject){
     if(fieldsDataObject.label!='Address Extended'&&fieldsDataObject.label!='Category IDs'&&fieldsDataObject.label!='Chain ID'){
@@ -17,6 +26,7 @@ function populateDataGridHeading(fieldsDataObject){
       gridHeading['datafield']=fieldsDataObject.name;
       gridHeading['align']='center';
       gridHeading['cellsalign']='left';
+      gridHeading['cellsrenderer']=cellsrenderer;
       //gridHeading['width']=?;
       // gridHeadingType['name']=fieldsDataObject.name;
       // gridHeadingType['type']=fieldsDataObject.datatype;
@@ -37,7 +47,6 @@ function makeReadCall(){
                 var gridColumnsField = gridColumns[c].datafield;
                 dataArray[l][gridColumnsField]=readResults[l][gridColumnsField];
             }
-            dataArray[l]['id']=readResults[l]['factual_id']
         }
         createjqxGrid(dataArray);
     })
@@ -55,14 +64,7 @@ function createjqxGrid(dataArray) {
           // record: "Product",
           // id: 'ProductID',
       };
-      // var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
-      //     if (value < 20) {
-      //         return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #ff0000;">' + value + '</span>';
-      //     }
-      //     else {
-      //         return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + '; color: #008000;">' + value + '</span>';
-      //     }
-      // }
+      
       var dataAdapter = new $.jqx.dataAdapter(source, {
           loadComplete: function (dataArray) { },
           loadError: function (xhr, status, error) { }
@@ -72,11 +74,14 @@ function createjqxGrid(dataArray) {
       $(".dataResultsGrid").jqxGrid(
         {
           width: 1290,
+          height: 360,
+          rowsheight:40,
           source: dataAdapter,
-          // theme:theme,                
-          // pageable: true,
+          pageable: true,
+          pagesize: pageSizeLim,
+          pagesizeoptions: ['20',pageSizeLim],
           autoheight: false,
-          sortable: true,
+          sortable: false,
           columnsResize:true,
           // altrows: true,
           // enabletooltips: true,
