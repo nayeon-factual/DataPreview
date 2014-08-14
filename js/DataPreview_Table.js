@@ -12,28 +12,31 @@ var readCall = "";
 //     enableColumnReorder: false,
 //     autoHeight: false
 // };
+var columnsrenderer = function (value) {
+  return '<div style="text-align: center; margin-top: 5px;">' + value + '</div>';
+}
 
 var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
           if (Object.prototype.toString.call(value) == '[object Array]') {
             if(columnfield == 'name'){
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> <b>' + value[0] + '</b> <br> <a href="http://www.factual.com/'+value[1]+'">' + value[1] +'</a></span>';
+              return '<span style="margin:4px 8px; float:' + columnproperties.cellsalign + ';"> <b>' + value[0] + '</b> <br> <a href="http://www.factual.com/'+value[1]+'">' + value[1] +'</a></span>';
             }else if(columnfield == 'location'){
               var pobox = formatDataDisplay(' | PO Box: ', value[1]);
               var addressStr = value[0] + '<br>' + value[2] + ', ' + value[3] + ', ' + value[5].toUpperCase() + ' ' + value[4];
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';">' + addressStr + pobox +'</span>';
+              return '<span style="margin:4px 8px; float:' + columnproperties.cellsalign + ';">' + addressStr + pobox +'</span>';
             }else if(columnfield == 'contact'){
               var tel = formatDataDisplay('Tel: ', value[1]);
               var fax = formatDataDisplay(' | Fax: ', value[2]);
               var email = formatDataDisplay(' | Email: ', value[3]);
               var website = formatDataDisplay('', value[0]);
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> ' + tel + fax + email + '<br> Website: ' + value[0] +'</span>';
+              return '<span style="margin:4px 8px; float:' + columnproperties.cellsalign + ';"> ' + tel + fax + email + '<br> Website: ' + value[0] +'</span>';
             }else if(columnfield == 'latlng'){
-              return '<span style="margin:4px; float:' + columnproperties.cellsalign + ';"> ' + value[0] + ', <br> ' + value[1] +'</span>';
+              return '<span style="margin:4px 8px; float:' + columnproperties.cellsalign + ';"> ' + value[0] + ', <br> ' + value[1] +'</span>';
             }
               
           }
           else {
-              return '<span style="margin: 4px;float: ' + columnproperties.cellsalign + ';">' + value + '</span>';
+              return '<span style="margin: 4px 8px;float: ' + columnproperties.cellsalign + ';">' + value + '</span>';
           }
       }
 
@@ -53,6 +56,7 @@ function populateDataGridHeading(fieldsDataObject){
       gridHeading['align']='center';
       gridHeading['cellsalign']='left';
       gridHeading['cellsrenderer']=cellsrenderer;
+      gridHeading['renderer']=columnsrenderer;
 
       if(nameColumn.indexOf(fieldsDataObject.name) == -1 && locationColumn.indexOf(fieldsDataObject.name) == -1 && latlngColumn.indexOf(fieldsDataObject.name) == -1 && contactColumn.indexOf(fieldsDataObject.name) == -1){
         gridHeading['text']=fieldsDataObject.label;
@@ -183,8 +187,10 @@ function createjqxGrid(dataArray) {
           // altrows: true,
           // enabletooltips: true,
           editable: false,
-          selectionmode: 'singlerow',
-          columns: gridColumns
+          selectionmode: 'none',
+          enablehover: false,
+          columns: gridColumns,
+          theme: 'custom'
         });
   });
 }

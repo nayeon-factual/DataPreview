@@ -57,3 +57,26 @@
 .ui-jqgrid .ui-jqgrid-bdiv {
     overflow: auto;
 }
+/* unvisited link */
+a:link {
+    color: #4493b2;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #4493b2;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #157094;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: #157094;
+    text-decoration: underline;
+}
