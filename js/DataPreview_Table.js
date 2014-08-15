@@ -94,60 +94,54 @@ function populateDataGridHeading(fieldsDataObject){
     }
 }
 
-function makeReadCall(){
-    var initReadCall = URL.replace('www.factual.com/data','api.v3.factual.com');
-    initReadCall += '&limit=50&KEY='+key;
-    readCall = initReadCall.replace(table_id+'#',table_id+'?');
-    $.get(readCall).done(function(data){
-        var readResults = data.response.data;
-        var dataArray = [];
-        for(l=0; l<readResults.length; l++){
-            dataArray[l] = {};
-            var nameList = [];
-            var locationList = [];
-            var latlngList = [];
-            var contactList = [];
+function populateGridData(readResults){
+  var dataArray = [];
+    for(l=0; l<readResults.length; l++){
+      dataArray[l] = {};
+      var nameList = [];
+      var locationList = [];
+      var latlngList = [];
+      var contactList = [];
 
-            for(c=0; c < gridColumns.length; c++){
+      for(c=0; c < gridColumns.length; c++){
 
-                var gridColumnsText = gridColumns[c].text;
-                var gridColumnsField = gridColumns[c].datafield;
+          var gridColumnsText = gridColumns[c].text;
+          var gridColumnsField = gridColumns[c].datafield;
 
-                if(gridColumnsField == 'name'){
-                  for(i=0; i<nameColumn.length; i++){
-                    var nameField = nameColumn[i];
-                    nameList.push(readResults[l][nameField]);
-                  }
-                    dataArray[l]['name']=nameList;
-
-                }else if(gridColumnsField == 'location'){
-                  for(i=0; i<locationColumn.length; i++){
-                    var locField = locationColumn[i];
-                    locationList.push(readResults[l][locField]);
-                  }
-                    dataArray[l]['location']=locationList;
-
-                }else if(gridColumnsText == 'Lat/Lng'){
-                  for(i=0; i<latlngColumn.length; i++){
-                    var latlngField = latlngColumn[i];
-                    latlngList.push(readResults[l][latlngField]);
-                  }
-                    dataArray[l]['latlng']=latlngList;
-
-                }else if(gridColumnsText == 'Contact Information'){
-                  for(i=0; i<contactColumn.length; i++){
-                    var contactField = contactColumn[i];
-                    contactList.push(readResults[l][contactField]);
-                  }
-                    dataArray[l]['contact']=contactList;
-                }else{
-                  dataArray[l][gridColumnsField]=readResults[l][gridColumnsField];
-                }
+          if(gridColumnsField == 'name'){
+            for(i=0; i<nameColumn.length; i++){
+              var nameField = nameColumn[i];
+              nameList.push(readResults[l][nameField]);
             }
-        }
-        console.log('dataarr '+JSON.stringify(dataArray));
-        createjqxGrid(dataArray);
-    })
+              dataArray[l]['name']=nameList;
+
+          }else if(gridColumnsField == 'location'){
+            for(i=0; i<locationColumn.length; i++){
+              var locField = locationColumn[i];
+              locationList.push(readResults[l][locField]);
+            }
+              dataArray[l]['location']=locationList;
+
+          }else if(gridColumnsText == 'Lat/Lng'){
+            for(i=0; i<latlngColumn.length; i++){
+              var latlngField = latlngColumn[i];
+              latlngList.push(readResults[l][latlngField]);
+            }
+              dataArray[l]['latlng']=latlngList;
+
+          }else if(gridColumnsText == 'Contact Information'){
+            for(i=0; i<contactColumn.length; i++){
+              var contactField = contactColumn[i];
+              contactList.push(readResults[l][contactField]);
+            }
+              dataArray[l]['contact']=contactList;
+          }else{
+            dataArray[l][gridColumnsField]=readResults[l][gridColumnsField];
+          }
+      }
+  }
+  console.log('dataarr '+JSON.stringify(dataArray));
+  createjqxGrid(dataArray);                 
 }
 
 function createjqxGrid(dataArray) {
@@ -156,11 +150,7 @@ function createjqxGrid(dataArray) {
       var source =
       {
           datatype: "array",
-          localdata: dataArray,
-          // datafields: gridDataFields,
-          // root: "Products",
-          // record: "Product",
-          // id: 'ProductID',
+          localdata: dataArray
       };
       
       var dataAdapter = new $.jqx.dataAdapter(source, {
