@@ -40,11 +40,13 @@ function getCoordinates(readResults){
   var coorSet = [];
     for(l=0; l<readResults.length; l++){
       var coor = [];
-      var lat = readResults[l]['latitude'];
-      var lng = readResults[l]['longitude'];
-      coor[0]=lat;
-      coor[1]=lng;
-      coorSet.push(coor);
+      if(readResults[l]['latitude']!=undefined&&readResults[l]['longitude']!=undefined){
+        var lat = readResults[l]['latitude'];
+        var lng = readResults[l]['longitude'];
+          coor[0]=lat;
+          coor[1]=lng;
+          coorSet.push(coor);
+      }
     }
     initMap(coorSet);
 }
