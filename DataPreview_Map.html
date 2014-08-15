@@ -6,6 +6,10 @@
         <!--MapBox-->
         <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css' rel='stylesheet' />
+        <!--MapCluster-->
+        <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+        <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
         <!--SmartSearch Files-->
         <link href='SmartSearch/resources/select2-3.5.1/select2.css' rel='stylesheet'/>
@@ -17,7 +21,7 @@
         <script type="text/javascript" src="SmartSearch/resources/synonymsByTable.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/select2-3.5.1/select2.js"></script>
         <script type="text/javascript" src="SmartSearch/js/filters.js"></script>
-        <script type="text/javascript" src="SmartSearch/js/SmartSearch.js"></script>
+        
 
     </head>
     
@@ -58,9 +62,9 @@
     <!-- MapBox Map -->
     <div id="dataResultsMap"></div>
 
-
-    <script type="text/javascript" src="js/MapGeojson.js"></script>    
     <script type="text/javascript" src="js/DataPreview_Map.js"></script>
+    <script type="text/javascript" src="SmartSearch/js/SmartSearch.js"></script>
+    <script type="text/javascript" src="js/MapGeojson.js"></script>    
 
     </body>
 </html>
