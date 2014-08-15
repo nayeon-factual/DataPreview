@@ -1,4 +1,5 @@
 L.mapbox.accessToken = 'pk.eyJ1IjoibmF5ZW9uLWZhY3R1YWwiLCJhIjoiWTF1Nzk0SSJ9.HkA7gvIL9dZXrJ6Yy9gJog';
+
 var geojson = [
   {
     "type": "Feature",
@@ -30,6 +31,6 @@ var geojson = [
   }
 ];
 
-L.mapbox.map('map', 'examples.map-i86nkdio')
+L.mapbox.map('dataResultsMap', 'nayeon-factual.ijioib62')
   .setView([37.8, -96], 4)
   .featureLayer.setGeoJSON(geojson);

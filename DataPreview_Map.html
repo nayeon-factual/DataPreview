@@ -3,27 +3,24 @@
         <title> DataPreview: Map </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
+        <!--MapBox-->
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css' rel='stylesheet' />
+
         <!--SmartSearch Files-->
         <link href='SmartSearch/resources/select2-3.5.1/select2.css' rel='stylesheet'/>
         <link href='SmartSearch/css/SmartSearch.css' rel='stylesheet'/>
-        <!--<link href='css/DataPreview_Map.css' rel='stylesheet'/>-->
+        <link href='css/DataPreview_Map.css' rel='stylesheet'/>
         <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/keyterms.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/taxonomy.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/synonymsByTable.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/select2-3.5.1/select2.js"></script>
         <script type="text/javascript" src="SmartSearch/js/filters.js"></script>
-        <script type="text/javascript" src="js/DataPreview_Table.js"></script>
+        
+        <!-- <script type="text/javascript" src="js/DataPreview_Table.js"></script> -->
         <script type="text/javascript" src="SmartSearch/js/SmartSearch.js"></script>
 
-        <!--MapBox-->
-        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js'></script>
-        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css' rel='stylesheet' />
-
-        <style>
-          body { margin:0; padding:0; }
-          #map { position:absolute; top:0; bottom:0; width:100%; }
-        </style>
     </head>
     
     <body>
@@ -61,7 +58,8 @@
     <div id="history"></div>
         
     <!-- MapBox Map -->
-    <div class="dataResultsMap"></div>
+    <div id="dataResultsMap"></div>
         
+    <script type="text/javascript" src="js/DataPreview_Map.js"></script>
     </body>
 </html>

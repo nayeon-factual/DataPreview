@@ -4,7 +4,6 @@ var nameColumn = ['name', 'factual_id'];
 var locationColumn = ['address', 'po_box' ,'locality', 'region', 'postcode','country'];
 var latlngColumn = ['latitude', 'longitude'];
 var contactColumn = ['website' ,'tel', 'fax' ,'email'];
-// var gridDataFields = [];
 var readCall = "";
 
 // var options = { for slickgrid
