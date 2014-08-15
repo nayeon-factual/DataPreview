@@ -57,6 +57,10 @@
 .ui-jqgrid .ui-jqgrid-bdiv {
     overflow: auto;
 }
+
+.jqx-widget-header jqx-widget-header-custom jqx-grid-header jqx-grid-header-custom{
+    height: 40px;
+}
 /* unvisited link */
 a:link {
     color: #4493b2;

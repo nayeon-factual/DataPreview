@@ -13,7 +13,7 @@ var readCall = "";
 //     autoHeight: false
 // };
 var columnsrenderer = function (value) {
-  return '<div style="text-align: center; margin-top: 5px;">' + value + '</div>';
+  return '<div style= "height: 20px; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; text-align: center; margin: 5px;">' + value + '</div>';
 }
 
 var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties, rowdata) {
@@ -36,7 +36,7 @@ var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproper
               
           }
           else {
-              return '<span style="margin: 4px 8px;float: ' + columnproperties.cellsalign + ';">' + value + '</span>';
+              return '<span style="margin: 4px 8px; float: ' + columnproperties.cellsalign + ';">' + value + '</span>';
           }
       }
 
@@ -78,7 +78,7 @@ function populateDataGridHeading(fieldsDataObject){
         gridHeading['datafield']='name';
         gridHeading['width']=290;
       }else if(locationColumn.indexOf(fieldsDataObject.name) == 0){
-        gridHeading['text']='Location';
+        gridHeading['text']='Location/Address';
         gridHeading['datafield']='location';
         gridHeading['width']=450;
       }else if(latlngColumn.indexOf(fieldsDataObject.name) == 0){
@@ -90,7 +90,6 @@ function populateDataGridHeading(fieldsDataObject){
         gridHeading['datafield']='contact';
         gridHeading['width']=400;
       }
-
       if(Object.keys(gridHeading).indexOf('text')!=-1)
         gridColumns.push(gridHeading);
     }
