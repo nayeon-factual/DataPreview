@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html ng-app>
+<!--ng-app="dataPreviewApp"-->
     <head>
         <title> DataPreview </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
         <!-- Angular.js -->
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+        <script src="resources/angular-1.2.0/angular.js"></script>
+
+        <!--<script src="js/controllers.js"></script> - not yet implemented-->
 
 
         <!--MapBox-->
@@ -26,6 +29,56 @@
         <script type="text/javascript" src="SmartSearch/resources/synonymsByTable.js"></script>
         <script type="text/javascript" src="SmartSearch/resources/select2-3.5.1/select2.js"></script>
         <script type="text/javascript" src="SmartSearch/js/filters.js"></script>
-        
-
     </head>
+
+    <body>
+    <!-- ng-controller="somethingsomething" -->
+
+<!--testing:         <div>
+          <input type="text" ng-model="yourName" placeholder="Enter a name here">
+          <h1>Hello, {{ yourName }}!</h1>
+        </div> -->
+
+    <!-- Header -->
+    <div class="header">
+        <div class="viewtabs">
+            <div class="overview"><a href="#/overview">OVERVIEW</a></div>  
+            <div class="tableview"><a href="../DataPreview/DataPreview_Table.html">TABLE</a></div>  
+            <div class="mapview"><a href="#/_Map">MAP</a></div>
+            <div class="countsview"><a href="#/countsview">COUNTS</a></div>
+        </div>  
+    </div>    
+        
+    <!-- General Input Search -->
+    <input class="searchInput" placeholder="Search" onkeydown="keyPress();"/>
+    <!-- Filters Input Search -->
+    <div class="hiddenToggle">
+        <div id="categoryLabel"></div>
+        <input type="hidden" class="filterInput" placeholder="Search"/>
+        <p class="filterSuggestions">Escape to Exit Filter Mode</p>
+    </div>
+    
+    <!-- Search Suggestions - make this dynamic? -->
+    <p class="suggestions">
+        Suggested Searches: &nbsp; "country: US"  &nbsp; "region: CA"  &nbsp; "city: Los Angeles" &nbsp; "chain: Starbucks"    
+    </p>
+    
+    <!-- Button - get rid of see result and openURL() every time URL is updated -->
+    <div id="buttons">
+<!--        <input type="button" value="See Results" id="resultsButton" onClick="openURL();"/>-->
+        <input type="button" value="Reset Filters" id="resetButton" onClick="reset();"/>
+    </div>    
+    
+    <!-- Filters History -->
+    <div id="history"></div>
+
+
+        
+    <!-- MapBox Map -->
+    <div id="dataResultsMap"></div>
+
+    <script type="text/javascript" src="js/DataPreview.js"></script>
+    <script type="text/javascript" src="SmartSearch/js/SmartSearch.js"></script> 
+    </body>
+</html>
+
