@@ -1,0 +1,80 @@
+
+.header{
+    position: absolute;
+    height: 10%;
+    width: 99%;
+    background-color: #F2FFFB;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:14px;
+    font-weight: bold;
+}
+
+.viewtabs{
+    position: inherit;
+    top:50%;
+    width:40%;
+    left:55%;
+}
+
+.overview{
+    position: inherit;
+    width: 14%;
+    display: inline-block;
+    right: 34%;
+    
+}
+
+.mapview{
+    position: inherit;
+    width: 8%;
+    display: inline-block;
+    right:22%;
+}
+
+.tableview{
+    position: inherit;
+    width: 8%;
+    display: inline-block;
+    right:15%;
+}
+
+.countsview{
+    position: inherit;
+    width: 8%;
+    right: 5%;
+    display: inline-block;
+}
+
+.partials{
+    position: absolute;
+    left:5%;
+    right:5%;
+    top: 40%;
+    height:60%;
+    width: 90%;
+/*    background-color: #F2FFFB;
+*/}
+
+/* unvisited link */
+a:link {
+    color: #4493b2;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #4493b2;
+    text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #157094;
+    text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: #157094;
+    text-decoration: underline;
+}
