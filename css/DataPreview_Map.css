@@ -1,4 +1,4 @@
-
+/*
 .header{
     position: absolute;
     height: 10%;
@@ -14,9 +14,9 @@
     top:50%;
     width:40%;
     left:55%;
-}
+}*/
 
-.overview{
+/*.overview{
     position: inherit;
     width: 14%;
     display: inline-block;
@@ -43,15 +43,15 @@
     width: 8%;
     right: 5%;
     display: inline-block;
-}
+}*/
 
 #dataResultsMap{
     position: absolute;
-    left:5%;
-    right:5%;
-    top: 40%;
-    height:60%;
-    width: 90%;
+    left:3%;
+    right:3%;
+    top: 32%;
+    height:68%;
+    width: 94%;
 /*    background-color: #F2FFFB;
 */}
 

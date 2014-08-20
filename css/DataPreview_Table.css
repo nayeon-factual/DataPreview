@@ -1,4 +1,4 @@
-.header{
+/*.header{
     position: absolute;
     height: 10%;
     width: 99%;
@@ -13,8 +13,8 @@
     top:50%;
     width:40%;
     left:55%;
-}
-
+}*/
+/*
 .overview{
     position: inherit;
     width: 14%;
@@ -43,12 +43,12 @@
     right: 5%;
     display: inline-block;
 }
-
+*/
 .dataResultsGrid{
     position: absolute;
     left:5%;
     right:5%;
-    top: 40%;
+    top: 35%;
     height:60%;
     width: 90%;
     background-color: #F2FFFB;
