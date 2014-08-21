@@ -1,4 +1,13 @@
+var oauth, options;
 
+options = {
+    // enablePrivilege: true,
+    consumerKey: 'i9VTDsvooscG7eFQ6ycBX16gwAvLqOVUDv9u2dMh',
+    consumerSecret: 'uowo6n31xVVg0UuwVfKJnbxCguCuLM0muJljvFxf'
+};
+
+oauth = OAuth(options);
+    
 L.mapbox.accessToken = 'pk.eyJ1IjoibmF5ZW9uLWZhY3R1YWwiLCJhIjoiWTF1Nzk0SSJ9.HkA7gvIL9dZXrJ6Yy9gJog';
 var map = L.mapbox.map('dataResultsMap', 'nayeon-factual.ijioib62')
   .setView([37.8, -96], 4);
