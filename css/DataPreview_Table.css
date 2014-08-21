@@ -46,11 +46,11 @@
 */
 .dataResultsGrid{
     position: absolute;
-    left:5%;
-    right:5%;
-    top: 35%;
+    left:3%;
+    right:3%;
+    top: 33%;
     height:60%;
-    width: 90%;
+    width: 94%;
     background-color: #F2FFFB;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .jqx-widget-header jqx-widget-header-custom jqx-grid-header jqx-grid-header-custom{
-    height: 40px;
+    height: 42px;
 }
 /* unvisited link */
 a:link {

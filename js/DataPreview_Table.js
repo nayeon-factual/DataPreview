@@ -11,6 +11,7 @@ var readCall = "";
 //     enableColumnReorder: false,
 //     autoHeight: false
 // };
+
 var columnsrenderer = function (value) {
   return '<div style= "height: 20px; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; text-align: center; margin: 5px;">' + value + '</div>';
 }
@@ -166,8 +167,8 @@ function createjqxGrid(dataArray) {
       $(".dataResultsGrid").jqxGrid(
         {
           // autowidth: true,
-          width: '90%',
-          height: '60%',
+          width: '94%',
+          height: '62%',
           //each row supports 3 lines
           rowsheight:60,
           source: dataAdapter,
