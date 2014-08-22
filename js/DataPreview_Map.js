@@ -37,6 +37,6 @@ function initMap(coorSet){
   		var openURL = e.layer.options.url;
  		window.open(openURL);
  	});
- 
+ 	console.log(markers.getBounds());
  	 map.fitBounds(markers.getBounds());
 }

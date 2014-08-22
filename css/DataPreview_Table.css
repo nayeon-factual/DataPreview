@@ -57,10 +57,19 @@
 .ui-jqgrid .ui-jqgrid-bdiv {
     overflow: auto;
 }
-
-.jqx-widget-header jqx-widget-header-custom jqx-grid-header jqx-grid-header-custom{
-    height: 42px;
+.jqx-grid-header{
+    height: 28px !important;
+    padding: 4px 0px !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;    
+    background-color: #0076b3 !important;
+    color: white !important;
 }
+
+/*.jqx-widget-header jqx-widget-header-custom jqx-grid-header jqx-grid-header-custom{
+    height: 45px !important;
+}*/
 /* unvisited link */
 a:link {
     color: #4493b2;

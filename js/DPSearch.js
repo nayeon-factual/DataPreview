@@ -1,20 +1,3 @@
-//Table ID varies depending on desired data set
-var table_id = 'places';
-var key = 'i9VTDsvooscG7eFQ6ycBX16gwAvLqOVUDv9u2dMh';
-var URL = 'http://www.factual.com/data/t/'+table_id+'#';
-var pageSizeLim;
-
-//Filters holds all appropriate details (label, searchable terms, history) on faceted filters
-// {name:{label:"Label", searchable:["name","label","synonyms"], history:["prevsearches"]}}
-var filters = {}; 
-var filtersCount = 0;
-var qHistory = [];
-var filterKey = "";
-
-$(function() {$('.searchInput').focus();});
-makeSchemaCall();
-makeReadCall();
-
 
 function makeSchemaCall() {
     var schemaCall = 'http://api.v3.factual.com/t/'+table_id+'/schema?KEY='+key;
@@ -24,10 +7,13 @@ function makeSchemaCall() {
         var fieldsData = data.response.view.fields;
         var stringifiedData = JSON.stringify(fieldsData);
         for(i=0; i<fieldsData.length; i++){
+
             //Call only for DataPreview_Table
             if (typeof populateDataGridHeading == 'function') { 
               populateDataGridHeading(fieldsData[i]);
             }
+
+
             if(fieldsData[i].faceted==true){
                 var fieldName = fieldsData[i].name.toString();
                 var fieldLabel = fieldsData[i].label.toString();
@@ -57,54 +43,57 @@ function makeSchemaCall() {
 
 function makeReadCall(){
     var initReadCall = URL.replace('www.factual.com/data','api.v3.factual.com');
-    var readCall = initReadCall.replace(table_id+'#',table_id+'?');
-    console.log(typeof populateGridData == 'function');
-    //Call only for DataPreview_Table
-    if (typeof populateGridData == 'function') {
-    var limit = '50'; 
-        $.ajax({
-            type: "GET",
-            url: readCall + '&limit='+ limit +'&KEY='+key,
-            success: function (data){
-                var readResults = data.response.data;
-                  populateGridData(readResults);   
-            }
-        });
-    }
-    console.log(typeof getCoordinates == 'function');
-    //Call only for DataPreview_Map
-    if (typeof getCoordinates == 'function') { 
-        var limit = '2000';
-        console.log(readCall);
-        $.ajax(//reset select to lat/lng and factual id
-        {
-            type: "GET",
-            url: readCall + 'limit='+ limit + '&select=latitude,longitude,factual_id' +'&KEY='+key,
-            beforeSend: function (request)
-                {
-                    request.setRequestHeader("X-Factual-Lib", 'factual-data-preview-v.1.0');
-                },
-            // dataType: 'json',
-            // async: false,
-            // data: '{"username": "' + username + '", "password" : "' + password + '"}',
-            success: function (data){
-                var readResults = data.response.data;
-                getCoordinates(readResults);
-            }
-        });
-    }
+    initReadCall += '&limit=50&KEY='+key;
+    readCall = initReadCall.replace(table_id+'#',table_id+'?');
 
-//     $.get(readCall).done(function(data){
-//         var readResults = data.response.data;
-//         //Call only for DataPreview_Table
-//         if (typeof populateGridData == 'function') { 
-//           populateGridData(readResults);
-//         }   
-//         //Call only for DataPreview_Map
-//         if (typeof getCoordinates == 'function') { 
-//           getCoordinates(readResults);
-//         }   
-//     })
+    // // console.log(typeof populateGridData == 'function');
+    // //Call only for DataPreview_Table
+    // if (typeof populateGridData == 'function') {
+    // var limit = '50'; 
+    //     $.ajax({
+    //         type: "GET",
+    //         url: readCall + '&limit='+ limit +'&KEY='+key,
+    //         success: function (data){
+    //             var readResults = data.response.data;
+    //               populateGridData(readResults);   
+    //         }
+    //     });
+    // }
+    // // console.log(typeof getCoordinates == 'function');
+    // //Call only for DataPreview_Map
+    // if (typeof getCoordinates == 'function') { 
+    //     var limit = '2000';
+    //     console.log(readCall);
+    //     $.ajax(//reset select to lat/lng and factual id
+    //     {
+    //         type: "GET",
+    //         url: readCall + 'limit='+ limit + '&select=latitude,longitude,factual_id' +'&KEY='+key,
+    //         beforeSend: function (request)
+    //             {
+    //                 request.setRequestHeader("X-Factual-Lib", 'factual-data-preview-v.1.0');
+    //             },
+    //         // dataType: 'json',
+    //         // async: false,
+    //         // data: '{"username": "' + username + '", "password" : "' + password + '"}',
+    //         success: function (data){
+    //             var readResults = data.response.data;
+    //             getCoordinates(readResults);
+    //         }
+    //     });
+    // }
+
+    $.get(readCall).done(function(data){
+        var readResults = data.response.data;
+        console.log(typeof populateGridData == 'function');
+        //Call only for DataPreview_Table
+        if (typeof populateGridData == 'function') { 
+          populateGridData(readResults);
+        }   
+        //Call only for DataPreview_Map
+        if (typeof getCoordinates == 'function') { 
+          getCoordinates(readResults);
+        }   
+    })
 }
 
 function addSearchableSyns(word){
@@ -254,7 +243,7 @@ function removeqFilter(obj){
         }
     }
     qHistory.splice(qHistory.indexOf(qInputToRemove), 1);
-    console.log('postremoveurl'+URL);
+    // console.log('postremoveurl'+URL);
     $(obj).remove();
     makeReadCall();
 }

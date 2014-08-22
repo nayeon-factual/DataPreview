@@ -6,12 +6,6 @@ var latlngColumn = ['latitude', 'longitude'];
 var contactColumn = ['website' ,'tel', 'fax' ,'email'];
 var readCall = "";
 
-// var options = { for slickgrid
-//     enableCellNavigation: true,
-//     enableColumnReorder: false,
-//     autoHeight: false
-// };
-
 var columnsrenderer = function (value) {
   return '<div style= "height: 20px; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; text-align: center; margin: 5px;">' + value + '</div>';
 }
@@ -168,7 +162,7 @@ function createjqxGrid(dataArray) {
         {
           // autowidth: true,
           width: '94%',
-          height: '62%',
+          height: '72%',
           //each row supports 3 lines
           rowsheight:60,
           source: dataAdapter,
@@ -189,6 +183,7 @@ function createjqxGrid(dataArray) {
   });
 }
 
+// SLickgrid settings 
 // function createGrid(dataArray) {
 //   $(function () {
 //       var dataView = new Slick.Data.DataView();

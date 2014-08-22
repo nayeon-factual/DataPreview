@@ -55,6 +55,11 @@
 /*    background-color: #F2FFFB;
 */}
 
+.dataResultsGrid{
+    width: 100%;
+    height: 100%;
+}
+
 /* unvisited link */
 a:link {
     color: #4493b2;
@@ -77,4 +82,11 @@ a:hover {
 a:active {
     color: #157094;
     text-decoration: underline;
+}
+.ui-jqgrid .ui-jqgrid-bdiv {
+    overflow: auto;
+}
+
+.jqx-widget-header jqx-widget-header-custom jqx-grid-header jqx-grid-header-custom{
+    height: 40px;
 }
